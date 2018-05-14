@@ -1,0 +1,44 @@
+Use:
+    openvibe ++
+    Emocore --
+    Arudino + Python API
+
+General:
+    two imaginations in your head -> map to different activities
+    record -> analyse -> re-record
+
+What features do we want to get:
+    supervised way
+
+
+TODO:
+    install emotive control panel
+    install openvibe
+    look for mental signals that will work
+    ask Stefan if we can use motor movement signal (without EMG noise)
+
+    18.05:
+        original software -> try different paradigms
+        recording datasetup
+
+TODO NEXT:
+    pick features
+    pick basic algorithms
+    split to check them out
+
+
+
+13.05 Notes:
+    Sequence:
+        1. nothing 4s
+        2. right hand 4s
+        3. nothing 4s
+        4. left hand 4s
+
+        *in the loop, just movement of the hands
+After recordin 40 times right, 40 times left and 80 times nothing -> additional recording of just left and righ 20 times each (with breaks)
+
+SuleComments:
+    if we don't give enough time in between recordings, between switching, there is a lot of noise
+    recording for 10 seconds, initial 4-5 seconds is just noise, then it starts to get it's shit togheter
+    next time when we record data for other training, we make sure we have envirometnal set up where we have same number of pauses
