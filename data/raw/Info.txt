@@ -1,6 +1,0 @@
-Sequence up till 160
-N R N L
-
-Sequence after 160
-
-R L 
