@@ -42,3 +42,51 @@ SuleComments:
     if we don't give enough time in between recordings, between switching, there is a lot of noise
     recording for 10 seconds, initial 4-5 seconds is just noise, then it starts to get it's shit togheter
     next time when we record data for other training, we make sure we have envirometnal set up where we have same number of pauses
+
+o---------------------------------------------------------------------------------------------------------------------------------------------o
+
+NOTES from meeting with Stefan(25.05):
+    IDEAS:
+        P300
+        Assisitve control
+        Bumper sensor
+        try the model on everyone -> pick the most capable one
+        *he suggests splitting the task, clearly stated in report who did what
+        *better grade for brain signals
+        *fails are also ok -> when meaningful and understood
+
+    MOTOR IMAGERY:
+        1. for motor imagery/executed movement -> MOVE THE ELECTRODES TO THE MOTOR CORTEX(TO THE BACK)
+        2. he did 4 fingers typing, they found event related effects, he does not know about the classification
+        3. different patienten
+        4. implement experiment protocol, it has to be precised with data that we recording -> both for Motor and SSVEP
+        5 Issues with Emotive, change of drivers from time to time, apporach Mohammed to check if you can record proper signal:
+            a: shake headset -> no reaction -> error
+            b: close the eyes -> look for Alpha oscilattions in ocipital
+        6. we didn't capture the motor planning - should be randomized and user should not know - ONPLY PREPARATION QUE, YOU KNOW YOU HAVE A TASK, NOT WHAT KIND
+
+    SSVEP:
+        1. filckering stimuli and psychopy (avoid programs to run parallel) -> possible
+        2. frame rate problems, driver problems
+            -> framerate of the screen
+            -> one comand to do a screen-flip
+            -> use certain fraction of the screen
+            -> you can do 4 stimuli in one screen: 4 parts of the screen that flicker different frequencies: different update rate for each of the patches
+                (one can be 6Hz, 12Hz -> int number fraction, only update and run and refresh only every 6th iteration etc.)
+                -> should not go too low or too high
+                ->paper on how: colors, shapes, and checkers are influencing SSVEP
+        3. 3/4 stimuli
+
+    DATA AQUISTION:
+        1. in data server aquistision, you need to download package, to start the code and catch in python
+        2. we can also do all recording in OpenVibe
+        3. implement code in BOXES IN OPENVIBE, even the control of the robot
+        4. Label stream from one acquisition server to the other, then merge them and you end up with one dataset with both markers and this
+
+    FEATURES:
+        1. with PCA you can not reduce the number of channels, unless you reduce the dimentions of the features
+        2. you can look at the combination and through out all channels that have small contribution -> sparse PCA
+            a.PCA scalling matirx that is not symetric, less components then channels, which you can use to scale your data
+        3. ICA - he used it to error related potentials, similar to PCA, weight matrix, apply to all the matrix, single signal -> DON'T TOUCH ICA
+            a. reliable ICA - 64 channels, uniform distribution
+            b. with emotive - no relablility
