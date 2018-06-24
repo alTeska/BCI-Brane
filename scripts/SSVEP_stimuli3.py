@@ -32,11 +32,11 @@ blink_freq = 0 #the counter object that will be increased with screen refresh ra
 #function for toggling the color
 def blink(df):
 	global blink_freq
-	if (blink_freq % 4) == 0: #15Hz
+	if (blink_freq % 2) == 0: #15Hz
 		plane_up.uniforms['diffuse'] = next(colors_up)
-	if (blink_freq % 6) == 0: #10 Hz
+	if (blink_freq % 3) == 0: #10 Hz
 	    plane_left.uniforms['diffuse'] = next(colors_left)
-	if (blink_freq % 3) == 0: #20Hz
+	if (blink_freq % 5) == 0: #20Hz
 		plane_right.uniforms['diffuse'] = next(colors_right)
 
 
@@ -47,7 +47,7 @@ def blink(df):
 def on_draw():
     window.clear()
     with rc.default_shader, rc.default_states:
-    	plane_up.draw()
+        plane_up.draw()
         plane_left.draw()
         plane_right.draw()
 
