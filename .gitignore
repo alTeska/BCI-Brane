@@ -1,2 +1,5 @@
 /data/old/*.csv
 /old/
+notebooks/.ipynb_checkpoints/
+notebooks/old/.ipynb_checkpoints/
+.ropeproject/

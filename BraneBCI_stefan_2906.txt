@@ -1,0 +1,36 @@
+Notes steffan meeting 29.06:
+CCA
+1. maximize the correlation from all channels and try to maximize correlation between target signal and what is present in the signal
+a) intrinsic dimentionality reduction
+b) FFT and just the target frequencies 
+6 electrodes
+6 harmonics
+
+take all the signals and end up with one correlation value from that target
+
+compare with target signals correlation
+-> correlation for all channels
+-> 
+
+Suggestions:
+1. compute wavelenght time frequency transform and visualize a few epochs, pick should be arising at some point
+(this epoch belongs)
+
+2. throw out first second 
+3. then subdivide into few epochs, possible fluctuations due to the attention
+
+pick can depend on a person and trial, pick does not have to coherent
+
+SVM -> not some decent  results 60/70%
+CCA -> won't get better, could go to 80% (outperform with standard approach)
+
+TODO:
+1. look at epochs - if it's not visible in some epochs, maybe something is wrong with this data
+2. SVM/other simple clasifier -> FFT plus certain bands, SVM should deal with all features
+	a) test first with base features
+	b) enable feature selection (+10% in our case)
+
+* confusion matrix to see, maybe there is confusion between two particular classes
+
+NOTES ABOUT SSVEP:
+distance, glasses, focus 
