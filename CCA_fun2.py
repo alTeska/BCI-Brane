@@ -5,34 +5,6 @@ from sklearn.cross_decomposition import CCA
 from scipy import stats
 from scipy.linalg import inv, eig
 
-num_samples = 100
-sampling_rate = 128
-
-## Create Sine Vectors of 3 frequencies
-time = np.arange(0,(num_samples)/sampling_rate, 1/sampling_rate)
-base_sin10 = np.sin(2*np.pi*time*10)
-base_sin15 = np.sin(2*np.pi*time*15)
-base_sin20 = np.sin(2*np.pi*time*20)
-base_sin12 =  np.sin(2*np.pi*time*12)
-
-Y = np.stack(((base_sin12, base_sin15, base_sin20))).T
-Y1 = np.stack(((base_sin10))).T
-Y2 = np.stack(((base_sin12))).T
-Y3 = np.stack(((base_sin15))).T
-
-## Create fake datasets
-sin_noise10 = base_sin10 + .2*np.random.randn(num_samples)
-sin_noise12 = base_sin12 + .2*np.random.randn(num_samples)
-sin_noise15 = base_sin15 + .2*np.random.randn(num_samples)
-
-X1 = 10*sin_noise10 +    sin_noise12 + sin_noise15
-X2 =    sin_noise10 + 10*sin_noise12 + base_sin20
-X3 = 20*sin_noise10 +    sin_noise12 + sin_noise15
-
-X = np.stack(((X1, X2, X3))).T
-
-
-## CCA calculations
 
 def CCA_corrcoeff(X, Y):
     """Function calculates correlations coeffciencts r"""
@@ -55,6 +27,35 @@ def CCA_corrcoeff(X, Y):
 
     return r, r_sqrt
 
+
+num_samples = 100
+sampling_rate = 128
+
+## Create Sine Vectors of 3 frequencies
+time = np.arange(0,(num_samples)/sampling_rate, 1/sampling_rate)
+base_sin10 = np.sin(2*np.pi*time*10)
+base_sin15 = np.sin(2*np.pi*time*15)
+base_sin20 = np.sin(2*np.pi*time*20)
+base_sin12 = np.sin(2*np.pi*time*12)
+
+Y = np.stack(((base_sin12, base_sin15, base_sin20))).T
+Y1 = np.stack(((base_sin10))).T
+Y2 = np.stack(((base_sin12))).T
+Y3 = np.stack(((base_sin15))).T
+
+## Create fake datasets
+sin_noise10 = base_sin10 + .2*np.random.randn(num_samples)
+sin_noise12 = base_sin12 + .2*np.random.randn(num_samples)
+sin_noise15 = base_sin15 + .2*np.random.randn(num_samples)
+
+X1 = 10*sin_noise10 +    sin_noise12 + sin_noise15
+X2 =    sin_noise10 + 10*sin_noise12 + base_sin20
+X3 = 20*sin_noise10 +    sin_noise12 + sin_noise15
+
+X = np.stack(((X1, X2, X3, X1))).T
+
+
+## CCA calculations
 
 r1, r1_sqrt = CCA_corrcoeff(X, Y1)
 r2, r2_sqrt = CCA_corrcoeff(X, Y2)
