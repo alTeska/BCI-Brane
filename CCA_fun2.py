@@ -8,7 +8,7 @@ from scipy.linalg import inv, eig
 
 def CCA_corrcoeff(X, Y):
     """Function calculates correlations coeffciencts r"""
-    Z = np.column_stack((X, Y,))
+    Z = np.column_stack((X, Y))
     C = np.cov(Z.T)
 
     sy = np.shape(Y)[1] if Y.ndim > 1 else 1
@@ -49,10 +49,10 @@ sin_noise12 = base_sin12 + .2*np.random.randn(num_samples)
 sin_noise15 = base_sin15 + .2*np.random.randn(num_samples)
 
 X1 = 10*sin_noise10 +    sin_noise12 + sin_noise15
-X2 =    sin_noise10 + 10*sin_noise12 + base_sin20
+X2 =    sin_noise10 + 10*sin_noise12 + sin_noise15
 X3 = 20*sin_noise10 +    sin_noise12 + sin_noise15
 
-X = np.stack(((X1, X2, X3, X1))).T
+X = np.stack(((X1, X2, X3))).T
 
 
 ## CCA calculations
