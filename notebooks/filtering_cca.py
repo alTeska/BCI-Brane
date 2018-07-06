@@ -61,16 +61,22 @@ def cca_corrs(X_input, f1, f2, f3, sampling_rate):
                     np.sin(2*np.pi*time*f1*2), np.cos(2*np.pi*time*f1*2),
                     np.sin(2*np.pi*time*f1*4), np.cos(2*np.pi*time*f1*4),
                     np.sin(2*np.pi*time*f1*6), np.cos(2*np.pi*time*f1*6),
+                    np.sin(2*np.pi*time*f1*8), np.cos(2*np.pi*time*f1*8),
+                    #np.sin(2*np.pi*time*f1*10), np.cos(2*np.pi*time*f1*10),
                    ))).T
     Y2 = np.stack(((np.sin(2*np.pi*time*f2)  , np.cos(2*np.pi*time*f2),
                     np.sin(2*np.pi*time*f2*2), np.cos(2*np.pi*time*f2*2),
                     np.sin(2*np.pi*time*f2*4), np.cos(2*np.pi*time*f2*4),
                     np.sin(2*np.pi*time*f2*6), np.cos(2*np.pi*time*f2*6),
+                    np.sin(2*np.pi*time*f2*8), np.cos(2*np.pi*time*f2*8),
+                    #np.sin(2*np.pi*time*f2*10), np.cos(2*np.pi*time*f2*10),
                    ))).T
     Y3 = np.stack(((np.sin(2*np.pi*time*f3)  , np.cos(2*np.pi*time*f3),
                     np.sin(2*np.pi*time*f3*2), np.cos(2*np.pi*time*f3*2),
                     np.sin(2*np.pi*time*f3*4), np.cos(2*np.pi*time*f3*4),
                     np.sin(2*np.pi*time*f3*6), np.cos(2*np.pi*time*f3*6),
+                    np.sin(2*np.pi*time*f3*8), np.cos(2*np.pi*time*f3*8),
+                    #np.sin(2*np.pi*time*f3*10), np.cos(2*np.pi*time*f3*10),
                    ))).T
 
     # 
@@ -78,6 +84,20 @@ def cca_corrs(X_input, f1, f2, f3, sampling_rate):
     r2 = CCA_corrcoeff(X, Y2)
     r3 = CCA_corrcoeff(X, Y3)
 
-    r = np.stack(((np.max(r1), np.max(r2), np.max(r3))))
+    
+
+    # Adding information content of two components
+    #r1 = np.sort(r1)
+    #r2 = np.sort(r2)
+    #r3 = np.sort(r3)
+    #L = X.shape[1]-1
+    #r = np.stack(( np.mean((r1[L], r1[L-1])), np.mean((r2[L], r2[L-1])), np.mean((r2[L], r2[L-1])) ))
+
+    r = np.stack(( np.max(r1), np.max(r2), np.max(r3) ))
+
+
+    #print("r1: ", r1)
+    #print("r2: ", r2)
+    #print("r3: ", r3)
     
     return np.round(r, 7)
