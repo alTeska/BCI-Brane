@@ -3,3 +3,5 @@
 notebooks/.ipynb_checkpoints/
 notebooks/old/.ipynb_checkpoints/
 .ropeproject/
+.ipynb_checkpoints/
+pyrcca-master/
